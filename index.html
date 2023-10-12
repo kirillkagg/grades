@@ -2,15 +2,86 @@
 <html>
    <head>
       <title>My Grades</title>
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
       <meta charset="UTF-8" />
       <style>
          * {
          font-family: "Open Sans", sans-serif;
          }
+         td {
+         /* стили для ячейки с оценками */
+         }
+         .subject-name {
+         flex: 1;
+         }
+         .marks {
+         flex: 2;
+         display: flex;
+         align-items: center;
+         }
+         /* Стили для коробочек с отметками */
+         .mark-box {
+         text-align: center;
+         margin: 0 2px;
+         padding: 0;
+         border-radius: 2px;
+         width: 15px;
+         height: 17px;
+         display: inline-block;
+         }
+         /* Стили для разных цветов отметок */
+         .mark-low {
+         background-color: #cf3838; /* Красный цвет */
+         color: #fff;
+         }
+         .mark-medium {
+         background-color: #ff8f00; /* Желтый цвет */
+         color: #fff;
+         }
+         .mark-high {
+         background-color: #4b9a25; /* Зеленый цвет */
+         color: #fff;
+         }
+         .average {
+         flex: 1;
+         }
+         .mark-average {
+         text-align: center;
+         margin: 0 2px;
+         padding: 0;
+         border-radius: 2px;
+         width: 35.5px;
+         height: 17px;
+         display: inline-block;
+         }
+         #add-mark {
+         background-color: #2f80ed;
+         color: #fff;
+         cursor: pointer;
+         transition: background-color 0.2s ease-in-out;
+         border: none;
+         border-radius: 8px;
+         padding: 5px 12px;
+         margin: 1px;
+         font-size: 14px;
+         }
+         .evr {
+         background: #eff6ff;
+         padding: 20px 0 70px 0;
+         height: 100%;
+         overflow-y: hidden;
+         }
+         html, body {
+         height: 100%;
+         margin: 0;
+         padding: 0;
+         overflow: hidden; /* Чтобы скрыть лишнюю прокрутку */
+         }
       </style>
    </head>
    <body>
-      <h1 style="color: #0f3159">My Grades</h1>
+      <h1 style="color: #0f3159; user-select: none; font-weight: bold; font-size: 2em; padding: 0 0 0 100px;">My Grades</h1>
       <div class="evr" style="background: #eff6ff; padding: 20px 0 70px 0; height: 100vh">
          <div class="ev" style="margin: 0 auto; width: 940px; box-shadow: 0 8px 16px rgba(143,149,178,0.15); border-radius: 12px; background: #fff">
             <div class="top" style="display: flex; padding: 20px 16px; -webkit-box-pack: justify; justify-content: space-between; position: relative;">
@@ -63,7 +134,7 @@
                </div>
             </div>
             <div class="taable" style="width: 100%; padding: 0 12px 12px 12px; box-sizing: border-box;">
-               <table style="min-width: 100%; border-spacing: 0; border-radius: 12px; border: 1px solid #e5eaf0; display: table; border-collapse: separate; box-sizing: border-box; text-indent: initial;">
+               <table style="min-width: 100%; border-spacing: 0; border-radius: 12px; border: 1px solid #e5eaf0; display: table; border-collapse: separate; box-sizing: border-box; text-indent: initial; ">
                   <thead style="display: table-header-group; vertical-align: middle;">
                      <tr style="display: table-row; vertical-align: inherit; border-color: inherit;">
                         <th style="padding-left: 12px; text-align: left; font-weight: 400; font-size: 11px; line-height: 15px; white-space: nowrap; padding: 8px; border-bottom: 1px solid #e5eaf0;">Предмет</th>
@@ -79,114 +150,114 @@
                   </thead>
                   <tbody id="grades">
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; ">Русский язык</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Русский язык</td>
                         <td id="russian-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0; ">
-                           <input type="text" id="russian-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="russian-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="russian-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Литература</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Литература</td>
                         <td id="literature-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="literature-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="literature-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="literature-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Английский язык</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Английский язык</td>
                         <td id="english-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="english-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="english-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="english-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">История</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">История</td>
                         <td id="history-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="history-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="history-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="history-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Алгебра</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Алгебра</td>
                         <td id="algebra-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="algebra-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="algebra-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="algebra-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Геометрия</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Геометрия</td>
                         <td id="geometry-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="geometry-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="geometry-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="geometry-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Физкультура</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Физкультура</td>
                         <td id="physical-education-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="physical-education-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="physical-education-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="physical-education-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">ОБЖ</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">ОБЖ</td>
                         <td id="obzh-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="obzh-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="obzh-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="obzh-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Родная литература</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Родная литература</td>
                         <td id="native-literature-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="native-literature-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="native-literature-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="native-literature-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Астрономия</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Астрономия</td>
                         <td id="astronomy-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="astronomy-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="astronomy-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="astronomy-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Обществознание</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Обществознание</td>
                         <td id="social-studies-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="social-studies-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="social-studies-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="social-studies-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Информатика</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Информатика</td>
                         <td id="informatics-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="informatics-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="informatics-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="informatics-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Физика</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Физика</td>
                         <td id="physics-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="physics-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="physics-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="physics-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Химия</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Химия</td>
                         <td id="chemistry-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="chemistry-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="chemistry-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="chemistry-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px">Задачи по физике</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #e5eaf0; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Задачи по физике</td>
                         <td id="physics-problems-marks" style="width: 634.38px; border-bottom: 1px solid #e5eaf0;">
-                           <input type="text" id="physics-problems-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="physics-problems-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="physics-problems-average" style="width: 71.17px; border-bottom: 1px solid #e5eaf0; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
                      <tr style="max-width: 150px; color: #0f3159; margin: 6px 14px auto 20px; -webkit-box-align: center; align-items: center; height: 40px">
-                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; width: 204.78px">Задачи по химии</td>
+                        <td style="font-weight: 600; font-size: 14px; line-height: 19px; overflow: hidden; text-overflow: ellipsis; width: 204.78px; margin: 0; padding: 0 14px 0 20px;">Задачи по химии</td>
                         <td id="chemistry-problems-marks" style="width: 634.38px">
-                           <input type="text" id="chemistry-problems-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
+                           <input type="text" class="subject-input" id="chemistry-problems-marks-input" required style="width: 634.38px; height: 30px; border: 1px solid #fff; border-radius: 0.2rem;" />
                         </td>
                         <td id="chemistry-problems-average" style="width: 71.17px; border-left: 1px solid #e5eaf0; text-align: center;"></td>
                      </tr>
@@ -205,141 +276,68 @@
          </div>
       </div>
       <script>
-         document.addEventListener("DOMContentLoaded", function() {
-           const results = document.querySelector('#results');
-           const subjects = {
-             "Русский язык": {
-               marks: [],
-               marksInput: document.getElementById('russian-marks-input'),
-               marksCell: document.getElementById('russian-marks'),
-               averageCell: document.getElementById('russian-average')
-             },
-             "Литература": {
-               marks: [],
-               marksInput: document.getElementById('literature-marks-input'),
-               marksCell: document.getElementById('literature-marks'),
-               averageCell: document.getElementById('literature-average')
-             },
-             "Английский язык": {
-               marks: [],
-               marksInput: document.getElementById('english-marks-input'),
-               marksCell: document.getElementById('english-marks'),
-               averageCell: document.getElementById('english-average')
-             },
-             "История": {
-               marks: [],
-               marksInput: document.getElementById('history-marks-input'),
-               marksCell: document.getElementById('history-marks'),
-               averageCell: document.getElementById('history-average')
-             },
-             "Алгебра": {
-               marks: [],
-               marksInput: document.getElementById('algebra-marks-input'),
-               marksCell: document.getElementById('algebra-marks'),
-               averageCell: document.getElementById('algebra-average')
-             },
-             "Геометрия": {
-               marks: [],
-               marksInput: document.getElementById('geometry-marks-input'),
-               marksCell: document.getElementById('geometry-marks'),
-               averageCell: document.getElementById('geometry-average')
-             },
-             "Физкультура": {
-               marks: [],
-               marksInput: document.getElementById('physical-education-marks-input'),
-               marksCell: document.getElementById('physical-education-marks'),
-               averageCell: document.getElementById('physical-education-average')
-             },
-             "ОБЖ": {
-               marks: [],
-               marksInput: document.getElementById('obzh-marks-input'),
-               marksCell: document.getElementById('obzh-marks'),
-               averageCell: document.getElementById('obzh-average')
-             },
-             "Родная литература": {
-               marks: [],
-               marksInput: document.getElementById('native-literature-marks-input'),
-               marksCell: document.getElementById('native-literature-marks'),
-               averageCell: document.getElementById('native-literature-average')
-             },
-             "Астрономия": {
-               marks: [],
-               marksInput: document.getElementById('astronomy-marks-input'),
-               marksCell: document.getElementById('astronomy-marks'),
-               averageCell: document.getElementById('astronomy-average')
-             },
-             "Обществознание": {
-               marks: [],
-               marksInput: document.getElementById('social-studies-marks-input'),
-               marksCell: document.getElementById('social-studies-marks'),
-               averageCell: document.getElementById('social-studies-average')
-             },
-             "Информатика": {
-               marks: [],
-               marksInput: document.getElementById('informatics-marks-input'),
-               marksCell: document.getElementById('informatics-marks'),
-               averageCell: document.getElementById('informatics-average')
-             },
-             "Физика": {
-               marks: [],
-               marksInput: document.getElementById('physics-marks-input'),
-               marksCell: document.getElementById('physics-marks'),
-               averageCell: document.getElementById('physics-average')
-             },
-             "Химия": {
-               marks: [],
-               marksInput: document.getElementById('chemistry-marks-input'),
-               marksCell: document.getElementById('chemistry-marks'),
-               averageCell: document.getElementById('chemistry-average')
-             },
-             "Задачи по физике": {
-               marks: [],
-               marksInput: document.getElementById('physics-problems-marks-input'),
-               marksCell: document.getElementById('physics-problems-marks'),
-               averageCell: document.getElementById('physics-problems-average')
-             },
-             "Задачи по химии": {
-               marks: [],
-               marksInput: document.getElementById('chemistry-problems-marks-input'),
-               marksCell: document.getElementById('chemistry-problems-marks'),
-               averageCell: document.getElementById('chemistry-problems-average')
-             }
-           };
-         
-           document.getElementById('add-mark').addEventListener('click', () => {
-           for (const subjectName in subjects) {
-         	const subject = subjects[subjectName];
-         	const marksString = subject.marksInput.value;
-         	if (marksString.trim() === '') continue;
-         
-         	// Разделите введенные оценки без пробелов
-         	const marksArray = marksString.split('').map(mark => parseFloat(mark)).filter(mark => !isNaN(mark));
-         
-         	if (marksArray.length > 0) {
-         	  subject.marks = marksArray;
-         
-         	  // Обновите ячейку "Отметки"
-         	  subject.marksCell.textContent = marksArray.join(' ');
-         
-         	  const average = marksArray.reduce((total, mark) => total + mark, 0) / marksArray.length;
-         
-         	  // Обновите значение среднего балла
-         	  subject.averageCell.textContent = average.toFixed(2);
-         
-         	  if (average >= 4) {
-         		subject.averageCell.classList.add('green');
-         	  } else if (average >= 3) {
-         		subject.averageCell.classList.add('yellow');
-         	  } else {
-         		subject.averageCell.classList.add('red');
-         	  }
-         	} else {
-         	  alert(`Введите правильные оценки для ${subjectName}.`);
-         	}
-         	subject.marksInput.value = '';
-           }
+         document.getElementById('add-mark').addEventListener('click', () => {
+            const inputs = document.querySelectorAll('.subject-input');
+            inputs.forEach(input => {
+                const marksString = input.value.trim();
+                if (marksString !== '') {
+                    const marksCell = input.parentNode;
+                    const averageCell = marksCell.nextElementSibling;
+                    processMarks(marksString, marksCell, averageCell);
+                    input.remove();
+                }
+            });
          });
-          });
+
+         function processMarks(marksString, marksCell, averageCell) {
+         // Очищаем ячейку от предыдущих оценок
+         marksCell.innerHTML = '';
+
+         // Убираем пробелы и обрабатываем каждую цифру, добавляя ее в виде коробки
+         const marksArray = marksString.replace(/\s/g, '').split('');
+         for (let i = 0; i < marksArray.length; i++) {
+         const digit = marksArray[i];
+         const markBox = document.createElement('span');
+         markBox.textContent = digit;
+         markBox.classList.add('mark-box');
+
+         if (digit === '1' || digit === '2') {
+            markBox.classList.add('mark-low');
+         } else if (digit === '3') {
+            markBox.classList.add('mark-medium');
+         } else if (digit === '4' || digit === '5') {
+            markBox.classList.add('mark-high');
+         }
+
+         // Добавляем цифру в ячейку
+         marksCell.appendChild(markBox);
+         }
+
+         // Рассчитываем средний балл
+         if (marksArray.length > 0) {
+         const totalMarks = marksArray.reduce((total, mark) => total + parseInt(mark), 0);
+         const markCount = marksArray.length;
+         const average = totalMarks / markCount;
+
+         // Создаем элемент для среднего балла
+         const averageBox = document.createElement('span');
+         averageBox.textContent = average.toFixed(2);
+         averageBox.classList.add('mark-average');
+
+         // Определяем цвет среднего балла в соответствии с условиями
+         if (average >= 0 && average < 2.5) {
+            averageBox.classList.add('mark-low');
+         } else if (average >= 2.5 && average < 3.5) {
+            averageBox.classList.add('mark-medium');
+         } else {
+            averageBox.classList.add('mark-high');
+         }
+
+         // Добавляем средний балл в ячейку
+         averageCell.appendChild(averageBox);
+         }
+         }
+
       </script>
    </body>
 </html>
