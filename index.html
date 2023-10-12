@@ -10,7 +10,6 @@
          font-family: "Open Sans", sans-serif;
          }
          td {
-         /* стили для ячейки с оценками */
          }
          .subject-name {
          flex: 1;
@@ -20,27 +19,26 @@
          display: flex;
          align-items: center;
          }
-         /* Стили для коробочек с отметками */
          .mark-box {
          text-align: center;
          margin: 0 2px;
          padding: 0;
          border-radius: 2px;
-         width: 15px;
-         height: 17px;
+         width: 17px;
+         height: 20px;
          display: inline-block;
+         line-height: 20px;
          }
-         /* Стили для разных цветов отметок */
          .mark-low {
-         background-color: #cf3838; /* Красный цвет */
+         background-color: #cf3838;
          color: #fff;
          }
          .mark-medium {
-         background-color: #ff8f00; /* Желтый цвет */
+         background-color: #ff8f00;
          color: #fff;
          }
          .mark-high {
-         background-color: #4b9a25; /* Зеленый цвет */
+         background-color: #4b9a25;
          color: #fff;
          }
          .average {
@@ -51,9 +49,10 @@
          margin: 0 2px;
          padding: 0;
          border-radius: 2px;
-         width: 35.5px;
-         height: 17px;
+         width: 37.5px;
+         height: 20px;
          display: inline-block;
+         line-height: 20px;
          }
          #add-mark {
          background-color: #2f80ed;
@@ -76,7 +75,7 @@
          height: 100%;
          margin: 0;
          padding: 0;
-         overflow: hidden; /* Чтобы скрыть лишнюю прокрутку */
+         overflow: hidden;
          }
       </style>
    </head>
@@ -290,10 +289,8 @@
          });
 
          function processMarks(marksString, marksCell, averageCell) {
-         // Очищаем ячейку от предыдущих оценок
          marksCell.innerHTML = '';
 
-         // Убираем пробелы и обрабатываем каждую цифру, добавляя ее в виде коробки
          const marksArray = marksString.replace(/\s/g, '').split('');
          for (let i = 0; i < marksArray.length; i++) {
          const digit = marksArray[i];
@@ -309,22 +306,18 @@
             markBox.classList.add('mark-high');
          }
 
-         // Добавляем цифру в ячейку
          marksCell.appendChild(markBox);
          }
 
-         // Рассчитываем средний балл
          if (marksArray.length > 0) {
          const totalMarks = marksArray.reduce((total, mark) => total + parseInt(mark), 0);
          const markCount = marksArray.length;
          const average = totalMarks / markCount;
 
-         // Создаем элемент для среднего балла
          const averageBox = document.createElement('span');
          averageBox.textContent = average.toFixed(2);
          averageBox.classList.add('mark-average');
 
-         // Определяем цвет среднего балла в соответствии с условиями
          if (average >= 0 && average < 2.5) {
             averageBox.classList.add('mark-low');
          } else if (average >= 2.5 && average < 3.5) {
@@ -333,7 +326,6 @@
             averageBox.classList.add('mark-high');
          }
 
-         // Добавляем средний балл в ячейку
          averageCell.appendChild(averageBox);
          }
          }
